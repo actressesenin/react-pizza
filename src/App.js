@@ -1,6 +1,5 @@
-import logo from '../src/logo.svg';
 import './App.css';
-import { render } from '@testing-library/react';
+import './scss/app.scss';
 
 function App() {
   return (
