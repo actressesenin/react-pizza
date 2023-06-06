@@ -1,8 +1,15 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveSize, setActiveType } from '../../redux/slices/pizzaSlice';
 
 function PizzaBlock({ title, price, imageUrl, sizes, types }) {
-  const [activeType, setActiveType] = React.useState(types[0]);
-  const [activeSize, setActiveSize] = React.useState(0);
+  // const [activeType, setActiveType] = React.useState(types[0]);
+  // const [activeSize, setActiveSize] = React.useState(0);
+  const dispatch = useDispatch();
+  const activeType = useSelector((state) => state.pizzas.activeType);
+  const activeSize = useSelector((state) => state.pizzas.activeSize);
+  console.log(activeType);
+  console.log(activeSize);
   const typeNames = ['тонкое', 'традиционное'];
 
   return (
@@ -14,7 +21,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
           {types.map((typeId) => (
             <li
               key={typeId}
-              onClick={() => setActiveType(typeId)}
+              onClick={() => dispatch(setActiveType(typeId))}
               className={activeType === typeId ? 'active' : ''}>
               {typeNames[typeId]}
             </li>
@@ -24,7 +31,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
           {sizes.map((size, i) => (
             <li
               key={i}
-              onClick={() => setActiveSize(i)}
+              onClick={() => dispatch(setActiveSize(i))}
               className={activeSize === i ? 'active' : ''}>
               {size} см.
             </li>
