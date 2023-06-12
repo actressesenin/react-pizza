@@ -3,13 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setActiveSize, setActiveType } from '../../redux/slices/pizzaSlice';
 
 function PizzaBlock({ title, price, imageUrl, sizes, types }) {
-  // const [activeType, setActiveType] = React.useState(types[0]);
-  // const [activeSize, setActiveSize] = React.useState(0);
   const dispatch = useDispatch();
-  const activeType = useSelector((state) => state.pizzas.activeType);
-  const activeSize = useSelector((state) => state.pizzas.activeSize);
-  console.log(activeType);
-  console.log(activeSize);
+  const { activeType, activeSize } = useSelector((state) => state.pizzas);
   const typeNames = ['тонкое', 'традиционное'];
 
   return (

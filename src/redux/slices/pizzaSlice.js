@@ -19,6 +19,5 @@ const pizzaSLice = createSlice({
 });
 
 export const { setActiveSize, setActiveType } = pizzaSLice.actions;
-console.log(pizzaSLice);
 
 export default pizzaSLice.reducer;
