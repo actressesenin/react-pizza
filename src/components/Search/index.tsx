@@ -7,7 +7,7 @@ import { setSearchValue } from '../../redux/slices/filterSlice';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState<string>('');
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const onClickClear = () => {
@@ -24,7 +24,7 @@ const Search = () => {
     [],
   );
 
-  const onChangeInput = (event: any) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSerachValue(event.target.value);
   };
