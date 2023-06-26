@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 
@@ -11,14 +12,12 @@ import Sort, { sortList } from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
-import {
-  selectFilter,
-  setCategoryId,
-  setCurrentPage,
-  setFilters,
-} from '../redux/slices/filterSlice';
-import { SearchPizzaParams, fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
+
 import { useAppDispatch } from '../redux/store';
+import { setCategoryId, setCurrentPage } from '../redux/filter/slice';
+import { selectFilter } from '../redux/filter/selectors';
+import { selectPizzaData } from '../redux/pizza/selectors';
+import { fetchPizzas } from '../redux/pizza/asyncActions';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -44,7 +43,7 @@ const Home: React.FC = () => {
     const search = searchValue ? `&search=${searchValue}` : '';
 
     dispatch(
-      //@ts-ignore
+      // @ts-ignore
       fetchPizzas({
         sortBy,
         order,
